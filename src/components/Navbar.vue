@@ -3,8 +3,7 @@
     :mini-variant.sync="mini"
     dark
     app
-    permanent
-    
+    permanent 
   >
     <v-list-item class="px-2">
       <v-list-item-avatar>
@@ -12,7 +11,7 @@
       </v-list-item-avatar>
       <v-list-item-content>
         <v-list-item-title > {{ usr_name }} </v-list-item-title>
-        <v-list-item-subtitle> Administrador </v-list-item-subtitle>
+        <v-list-item-subtitle> {{usr_rol}} </v-list-item-subtitle>
       </v-list-item-content>
       <v-btn icon @click="mini = !mini">
         <v-icon>mdi-chevron-left</v-icon>
@@ -52,7 +51,8 @@ export default {
   data: () => ({
     items: [
       { title: "Perfil", icon: "mdi-view-dashboard", ruta: "/profile" },
-      { title: "Mis Clientes", icon: "mdi-image", ruta: "/clientes" },
+      { title: "Mis Clientes", icon: "mdi-account", ruta: "/clientes" },
+    { title: "Vehiculos", icon: "mdi-car", ruta: "/vehiculos" }
     ],
     right: null,
     mini: false,
@@ -63,6 +63,6 @@ export default {
       this.$router.push("/");
     },
   },
-  props: ["usr_name"],
+  props: ["usr_name","usr_rol"],
 };
 </script>

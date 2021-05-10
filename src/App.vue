@@ -1,9 +1,10 @@
 <template>
-  <v-app app>
-    <v-main>
-      <router-view></router-view>
+  <v-app app >
+    <v-main >
+      <router-view fluid></router-view>
     </v-main>
   </v-app>
+  
 </template>
 
 <script>
@@ -19,3 +20,10 @@ export default {
   }),
 };
 </script>
+
+<style>
+main{
+  background-image:url('./assets/wallpaper-Login.jpg');
+  background-size:cover;
+}
+</style>

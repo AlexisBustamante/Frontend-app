@@ -1,6 +1,7 @@
 <template>
 <v-container fluid>
-     <Navbar    :usr_name="user.usr_name">    </Navbar>
+     <Navbar    :usr_name="user.usr_name"
+                :usr_rol="user.usr_rol">    </Navbar>
 </v-container>
 </template>
 

@@ -1,22 +1,36 @@
 <template>
-  <v-container >
-     <v-col cols="12">
-      <v-row justify="center">
-        <v-col md="6" sm="6">
+  <v-container>
+    <v-app-bar app dark>
+       
+    </v-app-bar>
+<v-alert 
+            text 
+            v-model="alert.show" 
+            :type="alert.type" 
+            dismissible>
+              {{ alert.message }}
+            </v-alert>
+<v-row align="center" justify="center">
+        <v-col cols=6 align="center">
           <v-card
+            dark
             class="ma-4"
             justify="center"
             elevation="24"
-            max-width="450"
-            dark
+            max-width="420"
+            max-height="430"
+            shaped
+            outlined
+            border-color
           >
             <v-row justify="center">
-              <v-avatar size="150 " class="ma-10">
+              <v-avatar size="100 " class="ma-8">
                 <v-img :src="require('../assets/Snake.svg')" contain />
               </v-avatar>
             </v-row>
-
-            <v-card-title></v-card-title>
+              <v-row justify="center">
+              <v-card-title justify="center">Welcome to SnakeApp</v-card-title>
+              </v-row>
 
             <v-card-text>
               <v-form class="ma-3" @submit.prevent="signIn()" ref="signInForm">
@@ -25,6 +39,7 @@
                   prepend-icon="mdi-email"
                   :rules="emailRules"
                   v-model="user.email"
+                  
                 ></v-text-field>
 
                 <v-text-field
@@ -33,19 +48,50 @@
                   type="password"
                   :rules="passwordRules"
                   v-model="user.password"
+                  
                 ></v-text-field>
 
                 <v-btn block class="success mt-3" type="submit">Sign In</v-btn>
               </v-form>
             </v-card-text>
-
-            <v-alert text v-model="alert.show" :type="alert.type" dismissible>
-              {{ alert.message }}
-            </v-alert>
+             
           </v-card>
         </v-col>
       </v-row>
-    </v-col>
+    
+
+<v-footer
+    dark
+    padless
+    app
+  >
+    <v-card
+      class="flex"
+      flat
+      tile
+    >
+      <v-card-title >
+       
+        <v-spacer></v-spacer>
+
+        <v-btn
+          v-for="icon in icons"
+          :key="icon"
+          class="mx-4"
+          dark
+          icon
+        >
+          <v-icon size="24px">
+            {{ icon }}
+          </v-icon>
+        </v-btn>
+      </v-card-title>
+
+      <v-card-text class="py-2 white--text text-center">
+      </v-card-text>
+    </v-card>
+  </v-footer>
+
   </v-container>
 </template>
 
@@ -54,6 +100,12 @@
 
 export default {
   data: () => ({
+    icons: [
+        'mdi-facebook',
+        'mdi-twitter',
+        'mdi-linkedin',
+        'mdi-instagram',
+      ],
     alert: {
       show: false,
       message: "Error",
