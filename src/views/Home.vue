@@ -1,8 +1,6 @@
 <template>
-  <v-container>
-    <v-app-bar app dark>
-       
-    </v-app-bar>
+  <v-container fluid>
+  
 <v-alert 
             text 
             v-model="alert.show" 
@@ -21,7 +19,7 @@
             max-height="430"
             shaped
             outlined
-            border-color
+            :style="'border: 1px solid grey'"
           >
             <v-row justify="center">
               <v-avatar size="100 " class="ma-8">
@@ -60,37 +58,6 @@
       </v-row>
     
 
-<v-footer
-    dark
-    padless
-    app
-  >
-    <v-card
-      class="flex"
-      flat
-      tile
-    >
-      <v-card-title >
-       
-        <v-spacer></v-spacer>
-
-        <v-btn
-          v-for="icon in icons"
-          :key="icon"
-          class="mx-4"
-          dark
-          icon
-        >
-          <v-icon size="24px">
-            {{ icon }}
-          </v-icon>
-        </v-btn>
-      </v-card-title>
-
-      <v-card-text class="py-2 white--text text-center">
-      </v-card-text>
-    </v-card>
-  </v-footer>
 
   </v-container>
 </template>
@@ -171,7 +138,7 @@ export default {
           const res = await this.axios.post("/signIn", this.user);
           
           //este log se ve ene el navegador, ya que es frontend.
-         // console.log(res.data);
+         
 
           if (res.data.Notfound) {
             this.alert = {

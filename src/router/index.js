@@ -37,6 +37,24 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/profile.vue"),
   },
+  {
+    path: "/agenda",
+    name: "agenda",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/agenda/agenda.vue"),
+  },
+    {
+    path: "/vehiculos",
+    name: "vehiculos",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/vehiculos/vehiculos.vue"),
+  },
 ];
 
 const router = new VueRouter({
