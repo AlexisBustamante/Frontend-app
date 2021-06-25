@@ -1,7 +1,7 @@
 <template>
 <v-container >
         <Navbar :usr_name="user.usr_name" :usr_rol="user.usr_rol"> </Navbar>
-<calendario></calendario>
+        <calendario :usr="user"></calendario>
 </v-container>
 
 </template>

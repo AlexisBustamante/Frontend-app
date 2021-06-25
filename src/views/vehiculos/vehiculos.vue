@@ -8,8 +8,6 @@
 
 <pasos></pasos>
 <StateSelector></StateSelector>
-<Calendar></Calendar>
-
 <calendario></calendario>
 
 </v-container>
@@ -19,7 +17,6 @@
 import Navbar from "@/components/Navbar.vue";
 import pasos from "@/components/Pasos.vue";
 import StateSelector from "@/components/StateSelector.vue";
-import Calendar from "@/components/Calendar.vue";
 
 import calendario from "@/components/Calendario.vue";
 
@@ -87,7 +84,6 @@ export default {
         Navbar,
         pasos,
         StateSelector,
-        Calendar,
         calendario
         
     },
