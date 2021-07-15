@@ -1,14 +1,11 @@
 <template>
 <v-container >
-
-
-
     <v-card dark>
         <v-row class="fill-height">
             <v-col>
                 <v-sheet height="64">
                     <v-toolbar flat>
-                        <v-btn color="primary" @click.stop="dialog = true">
+                        <v-btn color="primary" @click="dialog = true">
                             Crear Evento
                         </v-btn>
                         <v-spacer></v-spacer>
@@ -68,7 +65,7 @@
 
                                     <v-col>
                                         <v-row>
-                                            <v-text-field v-model="dateRangeText" label="Rango de Fecha" prepend-icon="mdi-calendar" readonly></v-text-field>
+                                            <v-text-field v-model="dateRangeText" label="Rango de Fecha" prepend-icon="mdi-calendar" ></v-text-field>
                                         </v-row>
                                         <v-row>
                                             <v-color-picker v-model="color" class="ma-2" show-swatches swatches-max-height="100px"></v-color-picker>
@@ -161,8 +158,8 @@ export default {
             day: 'Day',
             '4day': '4 Days',
         },
-        name: null,
-        details: null,
+        name: '',
+        details: '',
         start: null,
         end: null,
         color: '#1976D2', // default event color
@@ -174,7 +171,7 @@ export default {
         dialog: false,
         dialogDate: false,
         eventToAdd: {
-
+ 
         },
         eventNameRules: [
             value => !!value || 'Campo Obligatorio',
@@ -198,13 +195,12 @@ export default {
     computed: {
         title() {
 
-            const {
-                start,
-                end
-            } = this
+            const {start,end} = this
+
             if (!start || !end) {
                 return ''
             }
+
             const startMonth = (this.monthFormatter(start)).toUpperCase()
             const endMonth = this.monthFormatter(end)
             const suffixMonth = startMonth === endMonth ? '' : endMonth
@@ -248,9 +244,7 @@ export default {
             this.dialogDate = true
             this.focus = date
         },
-        viewDay({
-            date
-        }) {
+        viewDay({            date        }) {
             this.focus = date
             this.type = 'day'
         },
@@ -258,7 +252,7 @@ export default {
             return event.color
         },
         setToday() {
-            this.focus = this.today
+            this.focus = this.today;
         },
         prev() {
             this.$refs.calendar.prev()
@@ -272,7 +266,7 @@ export default {
 
             if (valid) {
 
-
+                this.dialog = false;
               this.eventToAdd = {
                     name: this.name,
                     details: this.details,
@@ -281,16 +275,15 @@ export default {
                     color: this.color
                 }
 
+               // this.today= new Date().toISOString().substr(0, 10),
                 this.events.push( this.eventToAdd);
-
-                this.dates=[];
-                this.date.push(this.today);
+                this.eventToAdd={};
+                //this.dates.push(this.today);
+                this.date=[];
                 this.name = '';
                 this.details = '';
-                this.start = this.today;
-                this.end = this.today;
                 this.color = '#1976D2';
-                this.dialog = false;
+                console.log(this.dates);
 
             }
 
@@ -327,10 +320,8 @@ export default {
             }
             nativeEvent.stopPropagation()
         },
-        updateRange({
-            start,
-            end
-        }) {
+        updateRange({ start, end}) {
+
             this.start = start
             this.end = end
         },
